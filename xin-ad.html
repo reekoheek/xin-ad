@@ -1,0 +1,64 @@
+<link rel="import" href="../polymer/polymer.html">
+<!--
+`xin-view` is a unit that represent page or a single view.
+
+Example:
+
+    <xin-view uri="/">
+      This is root view
+    </xin-view>
+
+    <xin-view uri="/foo">
+      <h1>Foo</h1>
+      <p>This is foo view</p>
+    </xin-view>
+
+    <xin-view uri="/bar">
+      This is bar view
+    </xin-view>
+
+@demo
+-->
+<dom-module id="xin-ad">
+
+</dom-module>
+
+<script type="text/javascript">
+(function(root) {
+  Polymer({
+    is: 'xin-ad',
+
+    ready: function() {
+
+      document.addEventListener('deviceready', function() {
+        if (typeof AdMob === 'undefined') {
+          console.error('No AdMob available or not running on device');
+          return;
+        }
+
+        var options = {
+          adId: this.adId,
+          position: AdMob.AD_POSITION[this.position],
+          autoShow: this.autoShow
+        };
+
+        AdMob.createBanner(options);
+      }.bind(this));
+    },
+
+    properties: {
+      adId: String,
+
+      position: {
+        type: String,
+        value: 'BOTTOM_CENTER',
+      },
+
+      autoShow: {
+        type: Boolean,
+        value: true
+      }
+    }
+  });
+})();
+</script>
