@@ -21,6 +21,10 @@
         return;
       }
 
+      if (typeof window.cordova === 'undefined') {
+        console.warn('admob-interstitial only work for cordova');
+      }
+
       var options;
 
       document.addEventListener('deviceready', function() {

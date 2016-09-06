@@ -31,6 +31,10 @@
         return;
       }
 
+      if (typeof window.cordova === 'undefined') {
+        console.warn('admob-banner only work for cordova');
+      }
+
       document.addEventListener('deviceready', function() {
         if (typeof AdMob === 'undefined') {
           console.error('No AdMob available or not running on device.');
